@@ -18,6 +18,13 @@
     <script src="meditate.js" type="text/javascript"></script>
     <!-- Custom CSS -->
     <link href="meditate.css" rel="stylesheet">  
+    <script type="text/javascript">
+    $(document).ready(function() {  
+    $(".dropdown-button").dropdown();
+    $('.button-collapse').sideNav();  
+    // instruction set to open on page load
+    }); // closure
+    </script>
   <style>
   .breathe-rate {
     z-index: 5 !important;
@@ -68,13 +75,6 @@
   <!-- *********** END NAVBAR *********** -->
 <br>
 <div class="container">
-<!-- <div class="row inline left-align"> -->
-  <!-- Instruction Feature Container -->
-  <!-- <a class="instruction btn-floating btn-sm waves-effect waves-light deep-purple darken-2 icon-btn btn tooltipped" data-html="true" data-delay="150" data-position="bottom" data-tooltip="<strong>M E D I T A T E</strong><hr><small> Visualization is a very useful technique for stress reduction. <br>Start by taking deep breaths in through your nose, exhaling through your mouth. <br>Focus on deep breathing, filling your belly with air. <br>Adjust the pulse tempo to match your breath if you find it too fast or slow. <br>You can also move the cursor to learn how the nebula webs react. <br><br>When you are ready, adjust your breathing and fixate the cursor at the center of the screen. <br>Watch as the webs starts to collopse into a circle. Imagine that this circle is your stress. <br><br>Watch as it slowly builds and accumulates on top of previous stress. <br>Notice how tense the circle becomes. <br>After a few moments, swipe the cursor off the canvas. <br>Watch as the circle dissipates away and imagine it as your stress. <br>Repeat this as many times as you like and take any liberties you wish.</small>"<i class="material-icons">?</i>
-  </a> -->
-  <!-- END Instruction Feature Container -->
-
-
     <div class="row right-align"><br><br>
        <!-- Instructions -->
         <a class="instruction btn-floating waves-effect waves-light grey darken-3 icon-btn btn tooltipped left-align" data-html="true" data-delay="150" data-position="bottom" data-tooltip="<strong>M E D I T A T E</strong><hr><small> Visualization is a very useful technique for stress reduction. <br>Start by taking deep breaths in through your nose, exhaling through your mouth. <br>Focus on deep breathing, filling your belly with air. <br>Adjust the pulse tempo to match your breath if you find it too fast or slow. <br>You can also move the cursor to learn how the nebula webs react. <br><br>When you are ready, adjust your breathing and fixate the cursor at the center of the screen. <br>Watch as the webs starts to collopse into a circle. Imagine that this circle is your stress. <br><br>Watch as it slowly builds and accumulates on top of previous stress. <br>Notice how tense the circle becomes. <br>After a few moments, swipe the cursor off the canvas. <br>Watch as the circle dissipates away and imagine it as your stress. <br>Repeat this as many times as you like and take any liberties you wish.</small>"<i class="material-icons">?</i>
@@ -104,14 +104,5 @@
 </div>
   <script type="text/javascript" color="255,255,255" count="200" opacity=".7" zIndex="-1" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
   
-  <script type="text/javascript">
-  $(document).ready(function() {  
-  $(".dropdown-button").dropdown();
-  $('.button-collapse').sideNav();  
-  // instruction set to open on page load
-  
-
-  }); // closure
-  </script>
 </body>
 </html>
