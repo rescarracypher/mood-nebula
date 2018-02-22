@@ -1,5 +1,5 @@
 {
-  "name": "Nebula",
+  "name": "nebula",
   "version": "1.0.0",
   "description": "### Nebula Moods",
   "main": "index.js",
@@ -31,5 +31,13 @@
     "passport-local": "^1.0.0",
     "sequelize": "^4.28.6"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rescarra/mood-nebula.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rescarra/mood-nebula/issues"
+  },
+  "homepage": "https://github.com/rescarra/mood-nebula#readme"
 }
