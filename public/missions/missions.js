@@ -14,19 +14,21 @@ $(function() {
     cleanView()
 
 
+// Dropdown and Instructions
+/*----------------------------------------------*/
 
-  // navbar dropdown
-  $(".dropdown-button").dropdown();
+  $(".dropdown-button").dropdown(); 
+  // instruction set to open on page load
+  
+    // on instruction pulse button click, close or open the instruction panel
+    $(".instruction").on('click', function(){
+      $('.tap-target').tapTarget('open');
+      
+    });
 
-  // instructional feature discovery
-  // $('.tap-target').tapTarget('open');
-  $(".instruction").click(function() {
-    if ($('.tap-target').tapTarget('open')){
-      $('.tap-target').tapTarget('close');
-    }
-    else {$('.tap-target').tapTarget('open');}
-  });
+    $('ul.tabs').tabs('swipeable', 'true');
 
+/*----------------------------------------------*/
 
 
 // authentification request to databases
