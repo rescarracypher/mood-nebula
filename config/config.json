@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "pixel_moods_db",
+    "database": "nebula_pixel_moods_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

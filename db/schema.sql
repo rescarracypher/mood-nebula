@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS
-pixel_moods_db;
+nebula_pixel_moods_db;
 
-CREATE DATABASE pixel_moods_db;
-USE pixel_moods_db;
+CREATE DATABASE nebula_pixel_moods_db;
+USE nebula_pixel_moods_db;
 
 
