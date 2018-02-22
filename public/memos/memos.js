@@ -13,6 +13,8 @@ $(function() {
 	// Navbar Dropdown
 	/*-------------------------------------------------- */
 	$(".dropdown-button").dropdown();
+	$(".button-collapse").sideNav();
+
 	// Collapse Memo Collection
 	/*-------------------------------------------------- */
 	$('.collapsible').collapsible();

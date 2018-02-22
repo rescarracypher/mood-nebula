@@ -17,6 +17,7 @@ $(function() {
 
   // navbar dropdown
   $(".dropdown-button").dropdown();
+  $('.button-collapse').sideNav();
 
   // instructional feature discovery
   // $('.tap-target').tapTarget('open');

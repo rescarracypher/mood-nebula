@@ -3,53 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>NEBUL\</title>
-
+  
+  <title>NEBUL\| MEMOS </title>
+  
+  <!-- Compiled and minified CSS ~ Boostrap 3.3.7  -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- $jQuery 3.3.1 CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Compiled and minified CSS ~ Materialize -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
-
   <!-- Compiled and minified JS ~ Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
   <!--  Icons ~ Material -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  
-  
+  <!-- MomentJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
   <!-- Custom CSS -->
-  <link href="meditate.css" rel="stylesheet" type="text/css">
+  <link href="meditate.css" rel="stylesheet">
 
-</head>
-<body> 
+      <script> 
+      $(document).ready(function(){
+        $('.dropdown-button').dropdown(); 
+        $(".button-collapse").sideNav();
+        $('.parallax').parallax();
+      });
+    </script>
+  </head>
+  <body>
+    <!-- *********** NAVBAR *********** -->
 
-  <!-- *********** NAVBAR *********** -->
+    <!-- NavBar Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/meditate">Meditate</a></li>
+        <li><a href="/moodmap">Map</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="/members">MOODS</a></li>
+      <li><a href="/missions">MISSIONS</a></li>
+      <li><a href="/memos">MEMOS</a></li>
+      <li><a href="/meditate">MEDITATE</a></li>
+      <li><a href="/moodmap">MAP</a></li>
+      <li><a href="/about">ABOUT</a></li>
+      <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+      <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+      <li><a href="/"><i class="material-icons">blur_on</i></a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper black">
+          <a href="/" class="brand-logo center"><i class="material-icons">dot</i></a>
 
-  <!-- NavBar Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="/meditate">Meditate</a></li>
-    <li><a href="/moodmap">Map</a></li>
-  </ul>
-  <nav>
-      <div class="nav-wrapper black">
-        <a href="/" class="brand-logo center">N E B U L \</a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-    <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
-          <li><a href="/members">MOODS</a></li>
-          <li><a href="/missions">MISSIONS</a></li>
-          <li><a href="/memos">MEMOS</a></li>
-        </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/about">ABOUT</a></li>
-          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
-          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
-        </ul>
-      </div>
-    </nav>
+          <ul id="nav-mobile-left" class="left hide-on-med-and-down">
+            <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+            <li><a href="/members">MOODS</a></li>
+            <li><a href="/missions">MISSIONS</a></li>
+            <li><a href="/memos">MEMOS</a></li>
+          </ul>
+          <ul id="nav-mobile-right" class="right hide-on-med-and-down">
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/login">LOGIN<i class="material-icons">person_outline</i></a></li>
+            <li><a href="/logout">LOGOUT<i class="material-icons">clear</i></a></li>
+          </ul>
+          <!-- Mobile -->
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">dialpad</i></a>
+        </div>
+      </nav>
 
-  <!-- *********** END NAVBAR *********** -->
+    <!-- *********** END NAVBAR *********** -->
+  
 <!-- *********** MAIN CONTENT ********** -->
 <div class="containers center-align">
     <div class="row center-align">  
@@ -92,7 +112,7 @@
 
 
 <!-- *********** FOOTER *********** -->
-<!--   <footer class="footer page-footer">
+  <!-- <footer class="footer page-footer">
     <div class="footer-copyright">
       <div class="container text-center">
         © 2018 NEBUL\
@@ -100,9 +120,13 @@
     </div>
   </footer> -->
 <!-- *********** END FOOTER *********** -->
-<script>$(".dropdown").dropdown();</script>
+
 <canvas id="logo-canvas""></canvas>
 <script type="text/javascript" count="449" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<!-- Custom JS -->
+<script src="meditate.js" type="text/javascript"></script>
+<!-- Granim JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/granim/1.1.0/granim.js"></script>
 
 </body>
 </html>
