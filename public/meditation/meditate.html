@@ -4,11 +4,6 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>NEBUL\</title>
-  <!-- Compiled and minified CSS ~ Boostrap 3.3.7  -->
-  <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
-
-  <!-- $jQuery 3.3.1 CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Compiled and minified CSS ~ Materialize -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
@@ -18,25 +13,11 @@
 
   <!--  Icons ~ Material -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<script>
-  $(function(){
-  $(".dropdown").dropdown();
-});
-</script>
-<style>
-/*  #logo-canvas, .logo-canvas{
-    z-index: -2;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }*/
-  
-</style>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="meditate.css">
+<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
+  <script>$(".dropdown").dropdown();</script>
 </head>
-<!-- Custom CSS -->
-<link href="meditate.css" type="text/css">
 <body> 
 
   <!-- *********** NAVBAR *********** -->
@@ -65,42 +46,44 @@
     </nav>
 
   <!-- *********** END NAVBAR *********** -->
-  <canvas id="logo-canvas""></canvas>
-
 <!-- *********** MAIN CONTENT ********** -->
-
-    <div class="container" id='mediations'>
-        <h3 class='text-center'>Welcome to the Visualzation Meditation Page.</h3>
-
-       <div class="center-align text-center">
-        <span class="meditation-instructions"><p>
-        Visualization is a very useful technique for stress reduction.
-
-        Start by moving the cursor and learning how the nebula webs react.
-
-        Once you are done, fixate the cursor at the center of the screen.
-
-        Watch as the webs starts to collopse into a circle.
-
-        Imagine that this circle is your stress.
-
-        Watch as it slowly builds and accumulates on top of previous stress.
-
-        Notice how tense the circle becomes.
-
-        After a few moments, swipe the cursor off the canvas.
-
-        Watch as the circle dissipates away and imagine it as your stress.
-
-        Repeat this as many times as you pke and take any pberties you wish.
-
-        When you are ready, hit the play button on the top left-hand corner of the screen.
-
-        Use headphones for best results.</p>
-      </span>
+<div class="containers center-align">
+    <div class="row center-align">  
+      <div class="blob">
+        <h1>Breathe</h1>
       </div>
-  </div>
+    </div>
+      <div class="row center-align">
+        <ul class="meditation-instructions">
+        
+        <li>Visualization is a very useful technique for stress reduction.</li>
 
+        <li>Start by moving the cursor and learning how the nebula webs react.</li>
+
+        <li>Once you are done, fixate the cursor at the center of the screen.</li>
+
+        <li>Watch as the webs starts to collopse into a circle.</li>
+
+        <li>Imagine that this circle is your stress.</li>
+        
+        
+        <li>Watch as it slowly builds and accumulates on top of previous stress.</li>
+
+        <li>Notice how tense the circle becomes.</li>
+
+        <li>After a few moments, swipe the cursor off the canvas.</li>
+
+        <li>Watch as the circle dissipates away and imagine it as your stress.</li>
+
+       
+        <li>Repeat this as many times as you pke and take any pberties you wish.</li>
+
+        <li>When you are ready, hit the play button on the top left-hand corner of the screen.</li>
+
+        <li>Use headphones for best results.</li>
+      </ul>
+    </div>
+</div>
 <!-- *********** MAIN CONTENT ********** -->
 
 
@@ -113,44 +96,9 @@
     </div>
   </footer> -->
 <!-- *********** END FOOTER *********** -->
-  <!-- <canvas id="canvas-basic" ></canvas> -->
 
-<script type="text/javascript" color="#fff" opacity='0.7' zIndex="-2" count="449" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- --><!-- <script type="text/javascript" src="js/login.js"></script>-->
- <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/granim/1.1.0/granim.js"></script>-->
-
-
-  <script>
-
-    // var granimInstance = new Granim({
-    //     element: '#canvas-basic',
-    //     name: 'basic-gradient',
-    //     direction: 'left-right', // 'diagonal', 'top-bottom', 'radial'
-    //     opacity: [.5, .5],
-    //     isPausedWhenNotInView: true,
-    //     states : {
-    //         "default-state": {
-    //             gradients: [
-    //                 ['#AA076B', '#61045F'],
-    //                 ['#02AAB0', '#00CDAC'],
-    //                 ['#DA22FF', '#9733EE']
-    //             ]
-    //         }
-    //     }
-    // });
-
-    // var options = [
-    //     // {selector: '#image-tests', offset: 50, callback: function(el) {
-    //     // Materialize.fadeInImage($(el), 1000);
-    //     // } },
-    //       {selector: '#meditations', offset: 500, callback: function(el) {
-    //         Materialize.fadeInImage($(el), 2000);
-    //       } }
-    //     ];
-    //     Materialize.scrollFire(options);
-
-  </script>
+<canvas id="logo-canvas""></canvas>
+<script type="text/javascript" count="449" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 
 </body>
 </html>
