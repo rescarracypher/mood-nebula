@@ -1,14 +1,13 @@
-'use strict'
+window.onload = function () {
+    
+  var pCircle = document.getElementsByClassName('pulser-wrap');
+  console.log("pCircle is " + pCircle[0]);
+  var pSelect = document.getElementById('s1');
+  console.log("pSelect is " + pSelect);
 
-$(function(){
-
-  var options = [
-      // {selector: '#image-tests', offset: 50, callback: function(el) {
-      // Materialize.fadeInImage($(el), 1000);
-      // } },
-        {selector: '#meditations', offset: 50, callback: function(el) {
-          Materialize.showStaggeredList($(el), 2000);
-        } }
-      ];
-      Materialize.scrollFire(options);
-});
+  $('#s1').on('input', function() { 
+    var pDuration = $(this).val() + "s";
+    $("#pWrap").css("animation-duration", pDuration);
+  });
+    
+};
