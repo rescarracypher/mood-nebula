@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(https://fonts.googleapis.com/css?family=Alegreya);
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@background: #ECF0F1;
+@textColor: #ECF0F1;
+@secondColor: #2980B9;
+@thirdColor: #E74C3C;
+@mainFont: montserrat;
+@mainWidth: 55vw;
+@maxWidth: 700px;
+@minWidth: 500px;
+@headerFont: 36px;
+@bodyFont: 22px;
+
+body {
+  background-color: @background;
+  font-family: @mainFont;
+  color: @textColor;
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+  animation-delay: 1.5s;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: left-justified;
+  justify-content: center;
+}
+
+.well {
+  font-size: @headerFont;
+  margin: 0 !important;
+  align-self: center;
+  font-weight: bold;
+  border-radius: 0;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: solid;
+  color: @textColor;
+  background-color: @secondColor;
+  width: @mainWidth;
+  max-width: @maxWidth;
+  min-width: @minWidth;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;
+}
+
+.socialList {
+  list-style-type:none;
+  text-align: center;
+}
+
+.icon {
+  margin: 5px;
+  font-size: @bodyFont;
+  vertical-align: middle;
+}
+
+.panel-group {
+  width: @mainWidth;
+  max-width: @maxWidth;
+  min-width: @minWidth;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;
+}
+
+.my-panel-heading {
+  text-decoration: none;
+  font-size: @bodyFont; 
+}
+
+.panel-group {
+  align-self: center;
+}
+
+.panel {
+  background-color: @secondColor;
+  border: none;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.panel-heading {
+  background-color: @secondColor !important;
+}
+
+a:link, a:visited, a:active {
+  color: @textColor;
+  text-decoration: none;
+}
+
+a:hover {
+  color: @thirdColor;
+}
+
+#top {
+  margin-bottom: 20px;
+}

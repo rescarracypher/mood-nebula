@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NEBUL\</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="2180moods - Mobile Mood Tracking App">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Compiled and minified CSS ~ Materialize -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
+  <!-- Compiled and minified JS ~ Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--  Icons ~ Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<audio controls>
+  <source src="music.mp3" type="audio/mpeg";>
+  Your browser does not support the audio tag.
+
+  <style>
+  audio {
+    opacity: .4;
+    margin-bottom: -80px;
+  }
+</style>
+</audio>
+
+<body>
+
+  
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/meditate">Meditate</a></li>
+    <li><a href="/moodmap">Map</a></li>
+    <!-- <li class="divider"></li> -->
+    <!-- <li><a href="/memos">Memos</a></li> -->
+  </ul>
+  <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo center">N E B U L \</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+          <li><a href="/members">MOODS</a></li>
+          <li><a href="/missions">MISSIONS</a></li>
+          <li><a href="/memos">MEMOS</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <!-- <li><a href="#">SIGNUP</a></li> -->
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  <br>
+  <div class="container">
+
+<div id="mydiv" style= "margin-top: -10px; position: absolute; margin-left: -50px; color: black; font-size: 30px; opacity: .6; font-family:'Roboto'">
+  <center>Welcome to the Visualzation Meditation Page.</center>
+  <center>Visualization is a very useful technique for stress reduction.</center>
+  <center>Start by moving the cursor and learning how the nebula webs react.
+  <center>Once you are done, fixate the cursor at the center of the screen.
+  <center>Watch as the webs starts to collopse into a circle.
+  <center>Imagine that this circle is your stress.
+  <center>Watch as it slowly builds and accumulates on top of previous stress. 
+  <center>Notice how tense the circle becomes.
+  <center>After a few moments, swipe the cursor off the canvas. 
+  <center>Watch as the circle dissipates away and imagine it as your stress.
+  <center>Repeat this as many times as you like and take any liberties you wish.
+  <center>When you are ready, hit the play button on the top left-hand corner of the screen.
+  <center>Use headphones for best results.
+
+</div>
+
+
+</div>
+
+  
+      <!-- #canvas-basic element tied to graident background via granim.js  -->
+      <canvas id="canvas-basic" style = "width:100%; position: inherit; margin-top: -115px; top: 0; bottom: 0; left: 0; right: 0; font-family: 'Roboto;"></canvas>
+    </div>
+  </div>
+ 
+<style>
+
+nav {
+  position: relative;
+  z-index: 2;
+  margin-top: -20px;
+}
+
+
+  nav, h1, h2, h3, h4, footer {
+    font-family: 'Roboto'
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+  }
+  a {
+    letter-spacing: .1em;
+    font-family: 'Roboto';
+    font-weight: 275;
+  }
+  a:hover {
+    color: #000;
+    text-shadow: .5px .5px #d363ff;
+    text-decoration: none;
+  }
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+  
+  }
+  </style>
+</head>
+<body>
+
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/1.1.0/granim.js"></script>
+  <script type="text/javascript">
+
+
+setTimeout(fade_out, 40000);
+
+function fade_out() {
+  $("#mydiv").fadeOut().empty();
+}
+
+  var granimInstance = new Granim({
+      element: '#canvas-basic',
+      name: 'basic-gradient',
+      direction: 'left-right', // 'diagonal', 'top-bottom', 'radial'
+      opacity: [.5, .5],
+      isPausedWhenNotInView: true,
+      states : {
+          "default-state": {
+              gradients: [
+                  ['#AA076B', '#61045F'],
+                  ['#02AAB0', '#00CDAC'],
+                  ['#DA22FF', '#9733EE']
+              ]
+          }
+      }
+  });
+
+  </script>
+
+
+<script type="text/javascript" color="grey" opacity='0.7' zIndex="-2" count="200" src="canvas-nest.js"></script>
+<script type="text/javascript">
+
+
+    function async_load() {
+        //async load github
+        var i = document.createElement("iframe");
+        i.src = "https://ghbtns.com/github-btn.html?user=hustcc&repo=canvas-nest.js&type=star&count=true";
+        i.scrolling = "no";
+        i.frameborder = "0";
+        i.border = "0";
+        i.setAttribute("frameborder", "0", 0);
+        i.width = "100px";
+        i.height = "20px";
+        document.getElementById("github_iframe").appendChild(i);
+    }
+
+    if (window.addEventListener) {window.addEventListener("load", async_load, false);}
+    else if (window.attachEvent) {window.attachEvent("onload", async_load);}
+    else {window.onload = async_load;}
+
+
+
+</script>
+
+</head>
+</body>
+</html>

@@ -1,0 +1,104 @@
+
+/* ---- reset ---- */
+
+
+body, html {
+  font-family: 'roboto';
+  font-weight:200;
+/*    background-color: black;
+*/}
+
+h1, h2, h3, h4, h5, h6, nav {
+  font-family: 'Roboto';
+  font-weight: 280;
+}
+/*body, .parallax {
+  margin: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+.brand-logo {
+  font-family: 'roboto';
+  font-size: 6em;
+
+}*/
+.definition, .description {
+  text-transform: uppercase;
+  font-size: 1.4em;
+  letter-spacing: .1em;
+}
+.subtitle {
+  text-transform: uppercase;
+  float: center;
+  align-content: center;
+  vertical-align: center;
+  margin-top: 10%;
+}
+
+img.parallax {
+  width:100%;
+  height:100%;
+}
+.neb-mini {
+  float: right;
+  display: inline-block;
+  height: 25% !important;
+  width: 25% !important;
+  /*padding-right: 7%;*/
+}
+.neb-head {
+  float: left;
+  display: inline-block;
+  height: 25% !important;
+  width: 25% !important;
+  /*padding-right: 7%;*/
+
+}
+.section, section {
+  background: transparent;
+}
+.parallax-container {
+  height: 300px !important;
+}
+
+ul, li {
+  font-size: 1.3em;
+  letter-spacing: .1em;
+}
+li{
+  padding: 5px;
+}
+
+/* ---- particles.js container ---- */
+/*
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+	#canvas-image {
+   
+    display: block;
+    height: 100%;
+    background-color: black;
+  
+    background-position-x: 50%;
+    background-position-y: 65%;
+}
+
+img {
+  
+  margin-left: 400px;
+  margin-top: 200px;
+  height: 225px;
+  
+}
+		}*/

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  <title>NEBUL\| MEMOS </title>
+  
+  <!-- Compiled and minified CSS ~ Boostrap 3.3.7  -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- $jQuery 3.3.1 CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Compiled and minified CSS ~ Materialize -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
+  <!-- Compiled and minified JS ~ Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--  Icons ~ Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- MomentJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+  <!-- Custom CSS -->
+  <link href="memos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body> 
+
+  <!-- *********** NAVBAR *********** -->
+
+  <!-- NavBar Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/meditate">Meditate</a></li>
+    <li><a href="/moodmap">Map</a></li>
+  </ul>
+  <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo center">N E B U L \</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+          <li><a href="/members">MOODS</a></li>
+          <li><a href="/missions">MISSIONS</a></li>
+          <li><a href="/memos">MEMOS</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  <br>
+  <!-- *********** END NAVBAR *********** -->
+  
+ 
+<!-- *********** MAIN CONTENT ********** -->
+  <div class="container">
+    <div class="row center-align">
+      <div class="col s2"></div>
+      <div class="col s8">
+        <h1>MEMOS</h1>
+        <p>Here you can add some context to your daily moods. Use this space as a place to journal, set
+        the intention for the day, or just say a few words about how you're feeling. Each 'Mood Memo'
+        will be saved and accesible below. Just click on the date to see whatcha wrote! Just think of
+        it as your online diary.</p>
+      </div>
+      <div class="col s2"></div>
+    </div><!-- Memo Container -->
+    <div class="row center-align">
+      <div class="col s2"></div>
+      <form class="col s8 memo-form blue-grey lighten-5 z-depth-5">
+        <div class="row">
+          <br>
+          <br>
+          <div class="input-field align-center col s11">
+            <i class="material-icons prefix">mode_edit</i> 
+            <textarea class="materialize-textarea memo validate" id="icon_prefix2" required="true" type="text"></textarea> 
+            <label data-error="Oops! Make sure to add text before submitting." for="icon_prefix2">Memo</label> 
+            <button class="btn btn-flat waves-effect waves-light transparent white-text" id="submit-memo" name="action" type="submit">S U B M I T</button>
+            
+          </div>
+        </div>
+      </form>
+      <div class="col s2"></div>
+    </div>
+    <div class="row">
+          <!-- <h4>YOUR MEMOS</h4> -->
+          <div class="col s2"></div>
+          <div class="col s8" id="activeMemos">
+            <ul class="memoList">
+            </ul>
+          </div>
+          <div class="col s2"></div>
+        </div>
+  </div>
+<!-- *********** END MAIN CONTENT *********** -->
+
+
+<!-- *********** FOOTER *********** -->
+  <footer class="footer page-footer">
+    <div class="footer-copyright">
+      <div class="container text-center">
+        © 2018 NEBUL\
+      </div>
+    </div>
+  </footer>
+<!-- *********** END FOOTER *********** -->
+
+  <!-- Custom JS -->
+  <script src="memos.js" type="text/javascript"></script>
+
+</body>
+</html>

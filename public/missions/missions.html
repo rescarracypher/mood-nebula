@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NEBUL\</title>
+  <!-- Compiled and minified CSS ~ Boostrap 3.3.7  -->
+  <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+  <!-- $jQuery 3.3.1 CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Compiled and minified CSS ~ Materialize -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
+  <!-- Compiled and minified JS ~ Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--  Icons ~ Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- MomentJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+  <!-- Custom CSS -->
+  <link href="missions.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <!-- *********** NAVBAR *********** -->
+
+  <!-- NavBar Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/meditate">Meditate</a></li>
+    <li><a href="/moodmap">Map</a></li>
+  </ul>
+  <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo center">N E B U L \</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+          <li><a href="/members">MOODS</a></li>
+          <li><a href="/missions">MISSIONS</a></li>
+          <li><a href="/memos">MEMOS</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  <br>
+  <!-- *********** END NAVBAR *********** -->
+
+<!-- *********** MAIN CONTENT ********** -->
+  <!-- Instruction Feature Container -->
+  <div class="container">
+    <a class="instruction black btn btn-floating" id="menu"><i class="material-icons">hdr_strong</i></a> <!-- Tap Target Structure -->
+    <div class="tap-target black" data-activates="menu">
+      <div class="tap-target-content">
+        <h5>MISSIONS</h5>
+        <p>Welcome to your missions page.<br>
+        <br>
+        Hover over the icons to view each mission. Tap the icon to add the mission to your daily, weekly, or monthly routine.<br>
+        <br>
+        Each mission is simple, but powerful. Backed by considerable research and praise.<br>
+        <br>
+        Think of it as a simple commitment to yourself.<br><em><small>Tap the pulsing button to close this feature.</small></em></p>
+      </div>
+    </div>
+  </div>
+  <div class="container center-align">
+    <!-- Mission Container -->
+
+    <!-- Meditate -->
+    <div class='missionCard btn-group' id="Meditate">
+      <div class="missionText">MEDITATE</div>
+
+      <div class="missionIcon">
+        <a class="missionMargin btn-floating btn-large waves-effect waves-light indigo accent-1 icon-btn btn tooltipped"  data-mission="Meditate" data-state="inactive" data-position="left" data-delay="50" data-html="true" data-tooltip="<strong>M E D I T A T E</strong><br><small><em class='text-muted'>20 minutes per day</em><hr>Find your bliss, whether it's meditation, prayer, or reflection — that mental calm and focus can help your body too, reducing stress and even lowering blood pressure. Adhereing to daily practice optimizes these benefits.<hr>Click the icon to start this mission! </small>">
+          <i class="material-icons">all_inclusive</i>
+        </a>
+        <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+        <p class="join hidden"> <a data-mission="Meditate" class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div>
+
+      <div class="missionQuestion hidden"> Did you meditate today? </div>
+      <div class="missionInput hidden">
+        <a data-mission="Meditate" class="x-small material-icons completed">thumb_up</a>
+        <a data-mission="Meditate" class="x-small material-icons not-completed">thumb_down</a>
+        <a data-mission="Meditate" class="x-small grey-text material-icons unfollow">delete</a>
+      </div>
+    </div>
+
+
+
+    <!-- Yoga -->
+    <div class='missionCard btn-group' id="Yoga">
+      <div class="missionText">DO YOGA</div>
+      <div class="missionIcon">
+        <a class="missionMargin btn-floating btn-large waves-effect waves-light deep-purple darken-3 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Yoga" data-state="inactive" data-position="bottom" data-tooltip="<strong>Y O G A</strong><br><small><em class='text-muted'>Once a week</em><hr>Yoga connects your body, mind, and soul. Feel strong inside and out, build lean muscle, and improve flexibility by going to yoga class once a week. <hr>Click the icon to start this mission! </small>"><i class="material-icons">spa</i>
+        </a>
+        <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+        <p class="join hidden"><a data-mission="Yoga" class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div>
+
+      <div class="missionQuestion hidden"> Did you go to yoga? </div>
+      <div class="missionInput hidden">
+        <a data-mission="Yoga" class="x-small material-icons completed">thumb_up</a>
+        <a data-mission="Yoga" class="x-small material-icons not-completed">thumb_down</a>
+        <a data-mission="Yoga" class="x-small grey-text material-icons unfollow">delete</a>
+      </div>
+    </div>
+
+
+
+    <!-- Exercise -->
+    <div class='missionCard btn-group' id="Exercise">
+      <div class="missionText">EXERCISE</div>
+      <div class="missionIcon">
+        <a class="missionMargin btn-floating btn-large waves-effect waves-light lime darken-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Exercise" data-state="inactive" data-position="right" data-tooltip="<strong>E X E R C I S E</strong><br><small><em class='text-muted'>Exercise 30 minutes a day</em><hr>Exercise sparks the release of feel-good endorphins, and satifies the human need to perform and excel.Breaking a sweat 3 times a week can boost your mood by 84% <hr> Click the icon to start this mission! </small>"><i class="material-icons">directions_bike</i>
+        </a>
+        <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+        <p class="join hidden"><a data-mission="Exercise" class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div>
+
+      <div class="missionQuestion hidden"> Did you exercise today? </div>
+      <div class="missionInput hidden">
+        <a data-mission="Exercise" class="x-small material-icons completed">thumb_up</a>
+        <a data-mission="Exercise" class="x-small material-icons not-completed">thumb_down</a>
+        <a data-mission="Exercise" class="x-small grey-text material-icons unfollow">delete</a>
+      </div>
+    </div>
+
+    <!-- Sleep -->
+    <div class='missionCard btn-group'  id="Sleep">
+      <div class="missionText">SLEEP MORE</div>
+      <div class="missionIcon">
+        <a class="missionMargin btn-floating btn-large waves-effect waves-light blue darken-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Sleep" data-state="inactive" data-position="left" data-tooltip="<strong>S L E E P</strong><br><small><em class='text-muted'>7-8 hours per night</em><hr>Most adults need around 7 or 8 hours of solid sleep a night to feel good, focus on work, and stay healthy. If you need more sleep, try to get to bed earlier, and don't exercise or drink caffeine or eat big meals before bed.<hr> Click the icon to start this mission!</small"><i class="material-icons">hotel</i>
+        </a>
+        <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+        <p class="join hidden"><a data-mission="Sleep" class="btn-join waves-effect waves-light btn">Join</a><p>
+    </div>
+
+      <div class="missionQuestion hidden"> Did you sleep 7 hours last night? </div>
+      <div class="missionInput hidden">
+        <a data-mission="Sleep" class="x-small material-icons completed">thumb_up</a>
+        <a data-mission="Sleep" class="x-small material-icons not-completed">thumb_down</a>
+        <a data-mission="Sleep" class="x-small grey-text material-icons unfollow">delete</a>
+      </div>
+    </div>
+
+
+
+      <!-- Eat Well -->
+    <div class='missionCard btn-group' id="Eat_Well">
+      <div class="missionText">EAT WELL</div>
+      <div class="missionIcon">
+        <a class="missionMargin btn-floating btn-large waves-effect waves-light red accent-2 icon-btn btn tooltipped center-align" data-delay="50" data-html="true" data-mission="Eat_Well" data-state="inactive" data-position="top" data-tooltip="<strong>E A T W E L L</strong><br><small><em class='text-muted'>daily</em><hr>Investing time and energy into understanding what your body needs is essential to our health and well-being. Be mindful of your eating habits. Honor your body's nutritional needs and aim for a healthy, balanced diet.<hr> Click the icon to start this mission!</small"><i class="material-icons">local_dining</i>
+        </a>
+        <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+        <p class="join hidden"><a data-mission="Eat_Well" class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div class="missionInput hidden">
+
+       <div class="missionQuestion hidden"> Did you eat balanced meals today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Eat_Well" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Eat_Well" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Eat_Well" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+    </div>
+
+
+
+      <!-- Socializing -->
+      <div class='missionCard btn-group' id="Socialize">
+        <div class="missionText">SOCIALIZE A BIT</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light teal accent-4 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Socialize" data-state="inactive" data-position="right" data-tooltip="<strong>S O C I A L I Z E</strong><br><small><em class='text-muted'>weekly</em><hr>Surrounding yourself with friends can help you feel happier. Socializing combats loneliness and improves overall mental health. Pets count too! Spend some time with a furry friend, and you’ll experience those mood-lifting effects instantly!<hr> Click the icon to start this mission!</small"><i class="material-icons">people</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a data-mission="Socialize" class="btn-join waves-effect waves-light btn">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you socialize today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Socialize" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Socialize" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Socialize" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+      <!-- Gratitude -->
+      <div class='missionCard btn-group' id="Gratitude">
+        <div class="missionText">BE GRATEFUL</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light purple accent-3 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Gratitude" data-state="inactive" data-position="left" data-tooltip="<strong>B E G R A T E F U L</strong><br><small><em class='text-muted'>daily</em><hr>When things aren't going your way, it's easy to lose sight of the good stuff. Think of one thing you're grateful for each day. It'll improve you're optimistism and stress management.<hr> Click the icon to start this mission!</small"><i class="material-icons">loyalty</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a data-mission="Gratitude" class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div>
+
+       <div class="missionQuestion hidden"> Did you find something you are grateful for? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Gratitude" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Gratitude" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Gratitude" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+
+
+      <!-- Writing -->
+      <div class='missionCard btn-group' id="Write">
+        <div class="missionText">WRITE SOMETHING</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light orange darken-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Write" data-state="inactive" data-position="top" data-tooltip="<strong>W R I T E</strong><br><small><em class='text-muted'>daily</em><hr>Whether it's a list to help manage daily stressors, a simple record of your day, a way to work out your feelings, or a creative outlet, journaling can help you better understand yourself, your body, and your place in the world.<hr>Click the icon to start this mission!</small"><i class="material-icons">mode_edit</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a data-mission="Write"  class="btn-join waves-effect waves-light btn">Join</a><p>
+      </div>
+
+       <div class="missionQuestion hidden"> Did you write today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Write" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Write" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Write" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+
+      <!-- Volunteer -->
+      <div class='missionCard btn-group' id="Volunteer">
+        <div class="missionText">VOLUNTEER</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light pink accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Volunteer" data-state="inactive" data-position="right" data-tooltip="<strong>V O L U N T E E R</strong><br><small><em class='text-muted'>monthly</em><hr>Helping others is key to helping yourself. Researchers believe volunteering boosts happiness because it increases empathy, which makes you appreciate all the good stuff in your own life.<hr> Click the icon to start this mission!</small"><i class="material-icons">assignment</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Volunteer">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you volunteer today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Volunteer" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Volunteer" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Volunteer" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+
+
+
+      <!-- Water -->
+      <div class='missionCard btn-group' id="Water">
+        <div class="missionText">REDUCE SUGARY DRINKS</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light blue accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Water" data-state="inactive" data-position="left" data-tooltip="<strong>S U G A R Y D R I N K S</strong><br><small><em class='text-muted'>daily</em><hr>Sugary drinks can be bad for you. Besides adding lots of enpty calories to our diets, sugar can lead to weight gain, high blood pressure, heart disease, and diabetes. A simple swap for water could help you avoid weight gain, even drop some. <hr> Click the icon to start this mission!</small"><i class="material-icons">local_drink</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Water">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you swap suggary drink for water today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Water" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Water" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Water" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+
+
+      <!-- Meatless days -->
+      <div class='missionCard btn-group' id="Vegetables">
+        <div class="missionText">EAT LESS MEAT</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light green accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Vegetables" data-state="inactive" data-position="right" data-tooltip="<strong>M E A T L E S S  D A Y S</strong><br><small><em class='text-muted'>Weekly</em><hr>Eating less meat and more plant-based foods is a good idea. The fiber in whole grains, beans, and vegetables is really good for you. Explore tasty vegetarian protein sources such as tofu, beans, lentils, quinoa. <hr> Click the icon to start this mission!</small"><i class="material-icons">restaurant</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Vegetables">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you avoid meat today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Vegetables" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Vegetables" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Vegetables" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+      <!-- Read -->
+      <div class='missionCard btn-group' id="Read">
+        <div class="missionText">READ MORE</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light red accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Read" data-state="inactive" data-position="right" data-tooltip="<strong>R E A D</strong><br><small><em class='text-muted'>20 minutes a day</em><hr>Make the time to read something for fun. Biography, science, romance, fantasy... Reading is a great mental workout but can help wund down after a stressful day as well<hr> Click the icon to start this mission!</small"><i class="material-icons">local_library</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Read">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you read today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Read" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Read" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Read" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+      <!-- Dance -->
+      <div class='missionCard btn-group' id="Dance">
+        <div class="missionText">DANCE</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light orange accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Dance" data-state="inactive" data-position="left" data-tooltip="<strong>D A N C E</strong><br><small><em class='text-muted'>20 minutes per day</em><hr>As the saying goes, if you can walk, you can dance! It's awesome cardio, feels great, and you can do it anytime - try putting on music and moving for 20 minutes after dinner.<hr> Click the icon to start this mission!</small"><i class="material-icons">speaker</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Dance">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you dance today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Dance" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Dance" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Dance" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+      <!-- Breathe -->
+      <div class='missionCard btn-group' id="Breathe">
+        <div class="missionText">BREATHE DEEPLY</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light blue accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Breathe" data-state="inactive" data-position="right" data-tooltip="<strong>B R E A T H E D E E P L Y</strong><br><small><em class='text-muted'>3 times per day</em><hr>Taking deep breaths can help reduce your stress, relax your muscles, and boost your energy levels. Focus on breathing deeply at least three times a day. <hr> Click the icon to start this mission!</small"><i class="material-icons">record_voice_over</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Breathe">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you practice deep breathing today? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Breathe" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Breathe" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Breathe" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+      <!-- Creativity -->
+      <div class='missionCard btn-group' id="Creativity">
+        <div class="missionText">BE CREATIVE</div>
+        <div class="missionIcon">
+          <a class="missionMargin btn-floating btn-large waves-effect waves-light pink accent-2 icon-btn btn tooltipped" data-delay="50" data-html="true" data-mission="Creativity" data-state="inactive" data-position="right" data-tooltip="<strong>B E C R E A T I V E</strong><br><small><em class='text-muted'>Weekly</em><hr>Knit, weld, play the guitar - once a week do that thing that makes you so happy. Creative fun stimulates the brain and helps you keep in touch with your playful side.<hr> Click the icon to start this mission!</small>">
+            <i class="material-icons">music_note</i>
+          </a>
+          <p class="joined hidden"> <i class="tiny green-text material-icons">check_circle</i>Joined</p>
+          <p class="join hidden"><a class="btn-join waves-effect waves-light btn" data-mission="Creativity">Join</a><p>
+        </div>
+
+       <div class="missionQuestion hidden"> Did you do anything creative? </div>
+       <div class="missionInput hidden">
+         <a data-mission="Creativity" class="x-small material-icons completed">thumb_up</a>
+         <a data-mission="Creativity" class="x-small material-icons not-completed">thumb_down</a>
+         <a data-mission="Creativity" class="x-small grey-text material-icons unfollow">delete</a>
+       </div>
+      </div>
+
+
+
+  </div>
+
+<div><br><br><br><br><br></div>
+<!-- *********** END MAIN CONTENT *********** -->
+
+<!-- *********** FOOTER *********** -->
+  <footer class="footer page-footer black">
+    <div class="footer-copyright">
+      <div class="container text-center">
+        © 2018 NEBUL\
+      </div>
+    </div>
+  </footer>
+<!-- *********** END FOOTER *********** -->
+  <!-- Custom JS -->
+  <script src="missions.js" type="text/javascript"></script>
+</body>
+</html>

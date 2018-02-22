@@ -1,0 +1,114 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>NEBUL\ | Meditate</title>
+    <!-- Latest compiled and minified CSS ~ Bootstrap-->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <!--jQuery 3.2.1 --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--  Google Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS ~ Materialize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet" >
+    <!-- Compiled and minified JS ~ Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" rel="stylesheet" ></script>
+    <link href="meditate.css" rel="stylesheet">   
+
+    <script> 
+    $(document).ready(function(){
+      $('.dropdown-button').dropdown(); 
+      // $('.parallax').parallax();
+    });
+  </script>
+</head>
+<body>
+  <!-- *********** NAVBAR *********** -->
+
+  <!-- NavBar Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/meditate">Meditate</a></li>
+      <li><a href="/moodmap">Map</a></li>
+  </ul>
+  <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo center"><i class="material-icons">dot</i></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+          <li><a href="/members">MOODS</a></li>
+          <li><a href="/missions">MISSIONS</a></li>
+          <li><a href="/memos">MEMOS</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- *********** END NAVBAR *********** --> 
+ 
+<!-- *********** MAIN CONTENT ********** -->
+<div class="container-fluid">
+      <div class="blob">
+        <h2>BREATHE</h2>
+      </div>
+  <div id="meditations-a">
+      <p>Welcome to the Visualzation Meditation Page.</p>
+
+      <p>Visuapzation is a very useful technique for stress reduction.</p>
+
+      <p>Start by moving the cursor and learning how the nebula webs react.</p>
+
+      <p>Once you are done, fixate the cursor at the center of the screen.</p>
+
+      <p>Watch as the webs starts to collopse into a circle.</p>
+
+      <p>Imagine that this circle is your stress.</p>
+<!--   </div>
+  <div id="meditations-b"> -->
+        <p>Watch as it slowly builds and accumulates on top of previous stress.</p>
+
+        <p>Notice how tense the circle becomes.</p>
+
+        <p>After a few moments, swipe the cursor off the canvas.</p>
+
+        <p>Watch as the circle dissipates away and imagine it as your stress.</p>
+
+        <p>Repeat this as many times as you pke and take any pberties you wish.</p>
+
+        <p>When you are ready, hit the play button on the top left-hand corner of the screen.</p>
+
+        <p>Use headphones for best results.</p>
+    </div>
+</div>
+<!-- *********** MAIN CONTENT ********** -->
+
+
+<!-- *********** FOOTER *********** -->
+<!--   <footer class="footer page-footer">
+    <div class="footer-copyright">
+      <div class="container text-center">
+        © 2018 NEBUL\
+      </div>
+    </div>
+  </footer> -->
+<!-- *********** END FOOTER *********** -->
+
+  <!-- Custom JS -->
+  <!-- <script src="meditate.js"></script> -->
+<script>
+    var options = [
+        {selector: '#meditations-a', offset: 50, callback: function(el) {
+        Materialize.fadeInImage($(el), 1000);
+        } },
+          {selector: '#meditations-b', offset: 150, callback: function(el) {
+            Materialize.fadeInImage($(el), 2000);
+          } }
+        ];
+        Materialize.scrollFire(options);
+</script>
+</body>
+</html>
