@@ -2,6 +2,7 @@
 
 nav, h1, h2, h3, h4, footer {
   letter-spacing: .2em;
+  font-weight:200;
   text-transform: uppercase;
   text-align: center;
   align-content: center;
@@ -27,7 +28,7 @@ a:hover {
 }*/
 html, body {
  
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0.9),rgba(27,5,117, .6), rgba(16,2,34, 0.8));
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0.9), rgba(16,2,34, 0.8));
   margin: 0;
   padding: 0;
   height: 100%;
@@ -37,7 +38,7 @@ html, body {
 }
 
 .pulser {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
   width: 300px;
   height: 300px;
   border-radius: 150px;
