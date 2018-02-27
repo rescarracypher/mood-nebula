@@ -2,8 +2,7 @@
   /* --------------------- NAVBAR / FOOTER / GLOBALS --------------------- */
 
   nav, h1, h2, h3, h4, footer {
-    font-family: 'Roboto';
-    font-weight:200;
+    font-family: 'Roboto'
     letter-spacing: .4em;
     text-transform: uppercase;
     text-align: center;

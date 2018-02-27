@@ -1,9 +1,10 @@
- // $(document).ready(function() {
+  // $(document).ready(function() {
 "use strict";
 $(function() {
+
     // let user;
     let user_id;
-	  const today = moment().format('MM/DD/YYYY');
+    const today = moment().format('MM/DD/YYYY');
     const missionArray = ["Meditate","Yoga","Exercise","Sleep","Eat_Well"
     ,"Socialize","Gratitude","Write","Volunteer","Water","Vegetables","Read"
     ,"Dance","Breathe","Creativity"]
@@ -12,23 +13,6 @@ $(function() {
     ]
 
     cleanView()
-
-
-
-  // navbar dropdown
-  $(".dropdown-button").dropdown();
-  $('.button-collapse').sideNav();
-
-  // instructional feature discovery
-  // $('.tap-target').tapTarget('open');
-  $(".instruction").click(function() {
-    if ($('.tap-target').tapTarget('open')){
-      $('.tap-target').tapTarget('close');
-    }
-    else {$('.tap-target').tapTarget('open');}
-  });
-
-
 
 // authentification request to databases
   $.get("/api/user_data")
@@ -73,7 +57,7 @@ $(function() {
 
   // Setting today's date
 
-	 // when any mood is selected in mood picker this section initiates api request to register items into database
+   // when any mood is selected in mood picker this section initiates api request to register items into database
    $(document).on("click", ".icon-btn", function() {
      event.preventDefault();
      const missionID = $(this).attr("data-mission")
@@ -207,7 +191,7 @@ $(function() {
 
 
 
-	// function that posts data into database.
+  // function that posts data into database.
   function logDailyMission(user_id, mission_id, mission_result, mission_date) {
     $.post("/api/missions", {
       user_id: user_id,
@@ -257,7 +241,7 @@ $(function() {
 
 
 
-	function markActiveMissions(data, activeMissions){
+  function markActiveMissions(data, activeMissions){
     for (var i = 0; i < missionArray.length; i++) {
       const id = "#"+missionArray[i]
       if ($.inArray(missionArray[i],activeMissions)>-1) {
@@ -279,8 +263,8 @@ $(function() {
       }
     }
   }
-	// add code to push to active missions row on missions.html!
-	// also add functionality to be able to remove missions if desired!
+  // add code to push to active missions row on missions.html!
+  // also add functionality to be able to remove missions if desired!
 
     function cleanView(){
       for (var i = 0; i < missionArray.length; i++) {
@@ -294,13 +278,11 @@ $(function() {
       }
     }
 
-    function seedMissions(){
-      logDailyMission(user_id,"Meditate","Completed", "02/12/2018")
+  
 
-    // const missionArray = ["Meditate","Yoga","Exercise","Sleep","Eat_Well"
-    // ,"Socialize","Gratitude","Write","Volunteer","Water","Vegetables","Read"
-    // ,"Dance","Breathe","Creativity"]
-    }
+
+
+
 
 
 }); // closure

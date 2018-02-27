@@ -66,9 +66,6 @@ $(function() {
         .then(function(dataI) {
           missions=dataI
 
-          console.log(emotions)
-          console.log(memos)
-          console.log(missions)
 
 
 
@@ -262,12 +259,6 @@ function placeInCircle(ItemClass, ItemLocation, radius) {
 }
 
 
-// createButtons()
-// placeInCircle("btn-drop", "colorwheel", 140)
-// placeInCircle("moodName", "colorwheel", 0)
-
-
-
 
 /// this section converts rgb to hex value for database storage
 var hexDigits = new Array
@@ -363,11 +354,6 @@ function hex(x) {
         }
 
       }
-
-      // $(".day").click(function() {
-      //   let datadate2 = $(this).children().attr('data-date2');
-      //   console.log('datadate2 ' + datadate2);
-      // });
     }
   }
 
@@ -376,7 +362,6 @@ function hex(x) {
 
 
   function addTooltip(dates){
-    console.log(dates)
     for (let i = 0; i < dates.length; i++) {
 
       let selector = "[data-date2='"+dates[i]+"']"
@@ -401,7 +386,7 @@ function hex(x) {
       let dataTooltip = "<strong> Date: "+ dates[i] +"</strong><br>"
       +"<hr><strong> Memos:</strong>"           +$(selector).attr("memo")
       +"<hr><strong> Moods Recorded:</strong>"  +$(selector).attr("mood")
-      +"<hr><strong> Completed Missions:</strong>"+$(selector).attr("mission")
+      +"<hr> <strong> Completed Missions:</strong>"+$(selector).attr("mission")
       +"</small>"
 
       $(selector).attr("data-tooltip",dataTooltip)
@@ -411,69 +396,5 @@ function hex(x) {
   }
 
 
-
-  $(document).on("click", "#seed", function() {
-    seedData()
-  })
-
-  function seedData () {
-
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '2/12/2018' , 'true')
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '1/4/2018' , 'true')
-    logDailyMood(user_id, 'Jealous' , '#7f00ff' , '2/6/2018' , 'false')
-    logDailyMood(user_id, 'Compassionate' , '#bf00ff' , '2/3/2018' , 'true')
-    logDailyMood(user_id, 'Loving' , '#ff00ff' , '1/8/2018' , 'true')
-    logDailyMood(user_id, 'Warm' , '#ff00bf' , '1/20/2018' , 'true')
-    logDailyMood(user_id, 'Frustrated' , '#ff0080' , '1/12/2018' , 'false')
-    logDailyMood(user_id, 'Angry' , '#ff003f' , '2/23/2018' , 'false')
-    logDailyMood(user_id, 'Irritated' , '#ff0000' , '1/14/2018' , 'false')
-    logDailyMood(user_id, 'Energetic' , '#ff3f00' , '1/3/2018' , 'true')
-    logDailyMood(user_id, 'Confident' , '#ff7f00' , '2/17/2018' , 'true')
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '2/4/2018' , 'true')
-    logDailyMood(user_id, 'Stressed' , '#ffff00' , '1/1/2018' , 'false')
-    logDailyMood(user_id, 'Anxious' , '#bfff00' , '1/10/2018' , 'false')
-    logDailyMood(user_id, 'Peaceful' , '#00ffff' , '2/16/2018' , 'true')
-    logDailyMood(user_id, 'Happy' , '#3fff00' , '1/31/2018' , 'true')
-    logDailyMood(user_id, 'Delighted' , '#00ff00' , '2/13/2018' , 'true')
-    logDailyMood(user_id, 'Fresh' , '#00ff40' , '2/22/2018' , 'true')
-    logDailyMood(user_id, 'Peaceful' , '#00ffff' , '1/5/2018' , 'true')
-    logDailyMood(user_id, 'Secure' , '#00ffbf' , '1/2/2018' , 'true')
-    logDailyMood(user_id, 'Peaceful' , '#00ffff' , '1/15/2018' , 'true')
-    logDailyMood(user_id, 'Peaceful' , '#00ffff' , '2/20/2018' , 'true')
-    logDailyMood(user_id, 'Happy' , '#3fff00' , '2/19/2018' , 'true')
-    logDailyMood(user_id, 'Happy' , '#3fff00' , '2/14/2018' , 'true')
-    logDailyMood(user_id, 'Guilty' , '#0000ff' , '1/17/2018' , 'false')
-    logDailyMood(user_id, 'Delighted' , '#00ff00' , '2/5/2018' , 'true')
-    logDailyMood(user_id, 'Happy' , '#3fff00' , '1/6/2018' , 'true')
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '2/21/2018' , 'true')
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '1/30/2018' , 'true')
-    logDailyMood(user_id, 'Irritated' , '#ff0000' , '1/29/2018' , 'false')
-    logDailyMood(user_id, 'Jealous' , '#7f00ff' , '2/7/2018' , 'false')
-    logDailyMood(user_id, 'Compassionate' , '#bf00ff' , '1/25/2018' , 'true')
-    logDailyMood(user_id, 'Loving' , '#ff00ff' , '2/2/2018' , 'true')
-    logDailyMood(user_id, 'Warm' , '#ff00bf' , '1/22/2018' , 'true')
-    logDailyMood(user_id, 'Frustrated' , '#ff0080' , '2/8/2018' , 'false')
-    logDailyMood(user_id, 'Energetic' , '#ff3f00' , '2/9/2018' , 'true')
-    logDailyMood(user_id, 'Delighted' , '#00ff00' , '2/18/2018' , 'true')
-    logDailyMood(user_id, 'Energetic' , '#ff3f00' , '1/18/2018' , 'true')
-    logDailyMood(user_id, 'Confident' , '#ff7f00' , '1/27/2018' , 'true')
-    logDailyMood(user_id, 'Couragious' , '#ffbf00' , '2/1/2018' , 'true')
-    logDailyMood(user_id, 'Confident' , '#ff7f00' , '1/26/2018' , 'true')
-    logDailyMood(user_id, 'Energetic' , '#ff3f00' , '2/15/2018' , 'true')
-    logDailyMood(user_id, 'Overwhelmed' , '#80ff00' , '1/23/2018' , 'false')
-    logDailyMood(user_id, 'Happy' , '#3fff00' , '1/7/2018' , 'true')
-    logDailyMood(user_id, 'Delighted' , '#00ff00' , '2/10/2018' , 'true')
-    logDailyMood(user_id, 'Fresh' , '#00ff40' , '1/19/2018' , 'true')
-    logDailyMood(user_id, 'Content' , '#00ff80' , '1/21/2018' , 'false')
-    logDailyMood(user_id, 'Secure' , '#00ffbf' , '1/16/2018' , 'true')
-    logDailyMood(user_id, 'Peaceful' , '#00ffff' , '1/24/2018' , 'true')
-    logDailyMood(user_id, 'Sad' , '#00bfff' , '1/11/2018' , 'false')
-    logDailyMood(user_id, 'Depressed' , '#007fff' , '1/28/2018' , 'false')
-    logDailyMood(user_id, 'Gloomy' , '#003fff' , '1/13/2018' , 'false')
-    logDailyMood(user_id, 'Guilty' , '#0000ff' , '1/9/2018' , 'false')
-    logDailyMood(user_id, 'Envious' , '#4000ff' , '2/11/2018' , 'false')
-
-
-  }
 });
 

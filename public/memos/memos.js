@@ -36,16 +36,6 @@ $(function() {
 		$.get("/api/memos", {
 			user_id: user_id
 		}).then(function(data) {
-			/*let memoDates = [];
-			for (let i = 0; i < data.length; i++) {
-				var memoDateToPush = moment(data[i].Memo_Date, "YYYY-MM-DD").format("dddd, MMMM Do YYYY");
-				if (memoDates.includes(memoDateToPush) === true) {
-					console.log('nope');
-				} else {
-					memoDates.push(moment(data[i].Memo_Date, "YYYY-MM-DD").format("dddd, MMMM Do YYYY"));
-				}
-				memoDates.push(moment(data[i].Memo_Date, "YYYY-MM-DD").format("M/D/YYYY"));
-			}*/
 			viewActiveMemos(data);
 		});
 	});
@@ -104,4 +94,5 @@ $(function() {
 			memoList.prepend(memoListItems);
 		}
 	}
+
 }); // onready closure

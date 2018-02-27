@@ -22,57 +22,77 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
   <!-- Custom CSS -->
   <link href="members.css" rel="stylesheet" type="text/css">
-  <script>
-    $(document).ready(function() {  
-      $(".dropdown-button").dropdown();
-      $('.button-collapse').sideNav();
-    });
-  </script>
+
 </head>
 <body>
- <!-- *********** NAVBAR *********** -->
+ <script> 
+$(document).ready(function(){
+$('.dropdown-button').dropdown(); 
+$(".button-collapse").sideNav();
+});
+</script>
 
- <!-- NavBar Dropdown Structure -->
- <ul id="dropdown1" class="dropdown-content">
-     <li><a href="/meditate">Meditate</a></li>
-     <li><a href="/moodmap">Map</a></li>
- </ul>
- <ul class="side-nav" id="mobile-demo">
-   <li><a href="/members">MOODS</a></li>
-   <li><a href="/missions">MISSIONS</a></li>
-   <li><a href="/memos">MEMOS</a></li>
-   <li><a href="/meditate">MEDITATE</a></li>
-   <li><a href="/moodmap">MAP</a></li>
-   <li><a href="/about">ABOUT</a></li>
-   <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
-   <li><a href="/logout"><i class="material-icons">clear</i></a></li>
-   <li><a href="/"><i class="material-icons">blur_on</i></a></li>
- </ul>
- <nav>
-     <div class="nav-wrapper black">
-       <a href="/" class="brand-logo center"><i class="material-icons">dot</i></a>
+  <!-- *********** NAVBAR *********** -->
 
-       <ul id="nav-mobile-left" class="left hide-on-med-and-down">
-         <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
-         <li><a href="/members">MOODS</a></li>
-         <li><a href="/missions">MISSIONS</a></li>
-         <li><a href="/memos">MEMOS</a></li>
-       </ul>
-       <ul id="nav-mobile-right" class="right hide-on-med-and-down">
-         <li><a href="/about">ABOUT</a></li>
-         <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
-         <li><a href="/logout"><i class="material-icons">clear</i></a></li>
-       </ul>
-       <!-- Mobile -->
-       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">dialpad</i></a>
-     </div>
-   </nav>
+    <!-- NavBar Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/meditate">Meditate</a></li>
+        <li><a href="/moodmap">Map</a></li>
+        <li><a href="/meanings">Meanings</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="/members">MOODS</a></li>
+      <li><a href="/missions">MISSIONS</a></li>
+      <li><a href="/memos">MEMOS</a></li>
+      <li><a href="/meditate">MEDITATE</a></li>
+      <li><a href="/moodmap">MAP</a></li>
+      <li><a href="/about">ABOUT</a></li>
+      <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+      <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+      <li><a href="/"><i class="material-icons">blur_on</i></a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper black" >
+           <a href="/" class="brand-logo center">N E B U L \</a>
 
- <!-- *********** END NAVBAR *********** -->
+          <ul id="nav-mobile-left" class="left hide-on-med-and-down">
+            <li><a class="dropdown-button" href="#" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+            <li><a href="/members">MOODS</a></li>
+            <li><a href="/missions">MISSIONS</a></li>
+            <li><a href="/memos">MEMOS</a></li>
+          </ul>
+          <ul id="nav-mobile-right" class="right hide-on-med-and-down">
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+            <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+          </ul>
+          <!-- Mobile -->
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">dialpad</i></a>
+        </div>
+      </nav>
+  <br>
+  <!-- *********** END NAVBAR *********** -->
 
+  <!-- Instruction Feature Container -->
+  <div class="container">
+    <a class="instruction tiny grey darken-3 btn btn-floating pulse" id="menu"><i class="tiny pulse material-icons">info</i></a> 
+    <!-- Tap Target Structure -->
+    <div class="tap-target black" data-activates="menu">
+      <br>
+      <div class="tap-target-content">
+        <!-- Tap Target Content -->
+          <h5>MOODS</h5>
+          <small><p>
+          Welcome to your moods homepage — where each entry is as spectacular & unique as the arrangement of atoms that make you, you! <br><br>Hover over the circles to view the color/mood associations. Tap the color to add it as your mood for the day & see how it renders in the calender below. <br><br>Next, visit the <span class='blue-text'>MISSIONS</span> & <span class='blue-text'>MEMOS</span> tabs above to add some <br>action & awareness to your entries.
+          <br><br>
+          It's as simple as spectacular and that!<br><br><em><small>Tap the pulsing button to close this feature.</small></em></p></small>
+        </div>
+      </div>
+    </div>
+    <!-- End Instruction -->
 <!-- *********** MAIN CONTENT ********** -->
   <div class="container-fluid">
-  <p class="text-center today"></p>
+  <p class="text-center today" ></p>
     <div class="container colorSelectionBox">
 
       <div id="colorwheel">
@@ -108,5 +128,17 @@
 
   <!-- Custom JS -->
   <script src="members.js" type="text/javascript"></script>
-</body>
+    <!-- Custom JS to stay on HTML page! -->
+      <script type="text/javascript">
+      $(document).ready(function() {  
+      $(".dropdown-button").dropdown(); 
+      $(".button-collapse").sideNav();
+      
+      // instruction set to open on page load
+        $(".instruction").on('click', function(){
+          $('.tap-target').tapTarget('open');
+        });
+      });
+    </script>
+  </body>
 </html>
