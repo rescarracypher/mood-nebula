@@ -326,7 +326,7 @@ function hex(x) {
 
   function createCalendar(data, emotion_dates) {
 
-    const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    const days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     const monthsNum = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     const moodGraph = document.getElementById('moodGraph');
@@ -338,7 +338,7 @@ function hex(x) {
       // Append columns
       for (let h = 0; h < days[i]; h++) {
         const element = document.getElementById(months[i]).getElementsByClassName('inner')[0];
-        let   calendarDate = (i + 1) + '/' + (h + 1) + '/' + 2018
+        let   calendarDate = (i + 1) + '/' + (h + 1) + '/' + 2020
         calendarDates.push(calendarDate)
 
 
