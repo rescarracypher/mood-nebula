@@ -82,8 +82,8 @@ const QueryGenerator = {
     const fields = [];
     const values = [];
     let query;
-    let valueQuery = '<%= tmpTable %>INSERT<%= ignoreDuplicates %> INTO <%= table %> (<%= attributes %>)<%= output %> VALUES (<%= values %>)';
-    let emptyQuery = '<%= tmpTable %>INSERT<%= ignoreDuplicates %> INTO <%= table %><%= output %>';
+    let valueQuery = '<%= tmpTable %>INSERT<%= ignoreDuplicates %> INTO <%= table %> (<%= attributes %>)<%= output %> VALUES (<%= values %>)<%= onConflictDoNothing %>';
+    let emptyQuery = '<%= tmpTable %>INSERT<%= ignoreDuplicates %> INTO <%= table %><%= output %><%= onConflictDoNothing %>';
     let outputFragment;
     let identityWrapperRequired = false;
     let tmpTable = '';         //tmpTable declaration for trigger
@@ -193,6 +193,7 @@ const QueryGenerator = {
 
     const replacements = {
       ignoreDuplicates: options.ignoreDuplicates ? this._dialect.supports.IGNORE : '',
+      onConflictDoNothing: options.ignoreDuplicates ? this._dialect.supports.onConflictDoNothing : '',
       table: this.quoteTable(table),
       attributes: fields.join(','),
       output: outputFragment,
@@ -217,41 +218,48 @@ const QueryGenerator = {
     Parameters: table name + list of hashes of attribute-value-pairs.
    @private
   */
-  bulkInsertQuery(tableName, attrValueHashes, options, rawAttributes) {
+  bulkInsertQuery(tableName, fieldValueHashes, options, fieldMappedAttributes) {
     options = options || {};
-    rawAttributes = rawAttributes || {};
+    fieldMappedAttributes = fieldMappedAttributes || {};
 
-    const query = 'INSERT<%= ignoreDuplicates %> INTO <%= table %> (<%= attributes %>) VALUES <%= tuples %><%= onDuplicateKeyUpdate %><%= returning %>;';
+    const query = 'INSERT<%= ignoreDuplicates %> INTO <%= table %> (<%= attributes %>) VALUES <%= tuples %><%= onDuplicateKeyUpdate %><%= onConflictDoNothing %><%= returning %>;';
     const tuples = [];
     const serials = {};
     const allAttributes = [];
     let onDuplicateKeyUpdate = '';
 
-    for (const attrValueHash of attrValueHashes) {
-      _.forOwn(attrValueHash, (value, key) => {
+    for (const fieldValueHash of fieldValueHashes) {
+      _.forOwn(fieldValueHash, (value, key) => {
         if (allAttributes.indexOf(key) === -1) {
           allAttributes.push(key);
         }
-
-        if (rawAttributes[key] && rawAttributes[key].autoIncrement === true) {
+        if (
+          fieldMappedAttributes[key]
+          && fieldMappedAttributes[key].autoIncrement === true
+        ) {
           serials[key] = true;
         }
       });
     }
 
-    for (const attrValueHash of attrValueHashes) {
-      tuples.push('(' + allAttributes.map(key => {
-        if (this._dialect.supports.bulkDefault && serials[key] === true) {
-          return attrValueHash[key] || 'DEFAULT';
+    for (const fieldValueHash of fieldValueHashes) {
+      const values = allAttributes.map(key => {
+        if (
+          this._dialect.supports.bulkDefault
+          && serials[key] === true
+        ) {
+          return fieldValueHash[key] || 'DEFAULT';
         }
-        return this.escape(attrValueHash[key], rawAttributes[key], { context: 'INSERT' });
-      }).join(',') + ')');
+
+        return this.escape(fieldValueHash[key], fieldMappedAttributes[key], { context: 'INSERT' });
+      });
+
+      tuples.push(`(${values.join(',')})`);
     }
 
     if (this._dialect.supports.updateOnDuplicate && options.updateOnDuplicate) {
-      onDuplicateKeyUpdate += ' ON DUPLICATE KEY UPDATE ' + options.updateOnDuplicate.map(attr => {
-        const field = rawAttributes && rawAttributes[attr] && rawAttributes[attr].field || attr;
-        const key = this.quoteIdentifier(field);
+      onDuplicateKeyUpdate = ' ON DUPLICATE KEY UPDATE ' + options.updateOnDuplicate.map(attr => {
+        const key = this.quoteIdentifier(attr);
         return key + '=VALUES(' + key + ')';
       }).join(',');
     }
@@ -262,7 +270,8 @@ const QueryGenerator = {
       attributes: allAttributes.map(attr => this.quoteIdentifier(attr)).join(','),
       tuples: tuples.join(','),
       onDuplicateKeyUpdate,
-      returning: this._dialect.supports.returnValues && options.returning ? ' RETURNING *' : ''
+      returning: this._dialect.supports.returnValues && options.returning ? ' RETURNING *' : '',
+      onConflictDoNothing: options.ignoreDuplicates ? this._dialect.supports.onConflictDoNothing : ''
     };
 
     return _.template(query, this._templateSettings)(replacements);
@@ -1087,18 +1096,19 @@ const QueryGenerator = {
 
         // Caching the base query and splicing the where part into it is consistently > twice
         // as fast than generating from scratch each time for values.length >= 5
-        const baseQuery = '(' + this.selectQuery(
+        const baseQuery = 'SELECT * FROM (' + this.selectQuery(
           tableName,
           {
             attributes: options.attributes,
             limit: options.groupedLimit.limit,
+            offset: options.offset,
             order: groupedLimitOrder,
             where,
             include,
             model
           },
           model
-        ).replace(/;$/, '') + ')';
+        ).replace(/;$/, '') + ') AS sub'; // Every derived table must have its own alias
         const placeHolder = this.whereItemQuery(Op.placeholder, true, { model });
         const splicePos = baseQuery.indexOf(placeHolder);
 
@@ -1233,12 +1243,16 @@ const QueryGenerator = {
           addTable = false;
         } else if (attr[0].indexOf('(') === -1 && attr[0].indexOf(')') === -1) {
           attr[0] = this.quoteIdentifier(attr[0]);
+        } else {
+          Utils.deprecate('Use sequelize.fn / sequelize.literal to construct attributes');
         }
         attr = [attr[0], this.quoteIdentifier(attr[1])].join(' AS ');
       } else {
-        attr = attr.indexOf(Utils.TICK_CHAR) < 0 && attr.indexOf('"') < 0 ? this.quoteIdentifiers(attr) : attr;
+        attr = attr.indexOf(Utils.TICK_CHAR) < 0 && attr.indexOf('"') < 0
+          ? this.quoteIdentifiers(attr)
+          : this.escape(attr);
       }
-      if (options.include && attr.indexOf('.') === -1 && addTable) {
+      if (!_.isEmpty(options.include) && attr.indexOf('.') === -1 && addTable) {
         attr = mainTableAs + '.' + attr;
       }
 
@@ -1247,7 +1261,6 @@ const QueryGenerator = {
   },
 
   generateInclude(include, parentTableName, topLevelInfo) {
-    const association = include.association;
     const joinQueries = {
       mainQuery: [],
       subQuery: []
@@ -1323,43 +1336,7 @@ const QueryGenerator = {
     if (include.through) {
       joinQuery = this.generateThroughJoin(include, includeAs, parentTableName.internalAs, topLevelInfo);
     } else {
-      if (topLevelInfo.subQuery && include.subQueryFilter) {
-        const associationWhere = {};
-
-        associationWhere[association.identifierField] = {
-          [Op.eq]: this.sequelize.literal(`${this.quoteTable(parentTableName.internalAs)}.${this.quoteIdentifier(association.sourceKeyField || association.source.primaryKeyField)}`)
-        };
-
-        if (!topLevelInfo.options.where) {
-          topLevelInfo.options.where = {};
-        }
-
-        // Creating the as-is where for the subQuery, checks that the required association exists
-        const $query = this.selectQuery(include.model.getTableName(), {
-          attributes: [association.identifierField],
-          where: {
-            [Op.and]: [
-              associationWhere,
-              include.where || {}
-            ]
-          },
-          limit: 1,
-          tableAs: include.as
-        }, include.model);
-
-        const subQueryWhere = this.sequelize.asIs([
-          '(',
-          $query.replace(/\;$/, ''),
-          ')',
-          'IS NOT NULL'
-        ].join(' '));
-
-        if (_.isPlainObject(topLevelInfo.options.where)) {
-          topLevelInfo.options.where['__' + includeAs.internalAs] = subQueryWhere;
-        } else {
-          topLevelInfo.options.where = { [Op.and]: [topLevelInfo.options.where, subQueryWhere] };
-        }
-      }
+      this._generateSubQueryFilter(include, includeAs, topLevelInfo);
       joinQuery = this.generateJoin(include, topLevelInfo);
     }
 
@@ -1598,70 +1575,9 @@ const QueryGenerator = {
           joinCondition += ` AND ${targetWhere}`;
         }
       }
-      if (topLevelInfo.subQuery && include.required) {
-        if (!topLevelInfo.options.where) {
-          topLevelInfo.options.where = {};
-        }
-        let parent = include;
-        let child = include;
-        let nestedIncludes = [];
-        let query;
-
-        while ((parent = parent.parent)) { // eslint-disable-line
-          nestedIncludes = [_.extend({}, child, { include: nestedIncludes })];
-          child = parent;
-        }
-
-        const topInclude = nestedIncludes[0];
-        const topParent = topInclude.parent;
-
-        if (topInclude.through && Object(topInclude.through.model) === topInclude.through.model) {
-          query = this.selectQuery(topInclude.through.model.getTableName(), {
-            attributes: [topInclude.through.model.primaryKeyField],
-            include: Model._validateIncludedElements({
-              model: topInclude.through.model,
-              include: [{
-                association: topInclude.association.toTarget,
-                required: true
-              }]
-            }).include,
-            model: topInclude.through.model,
-            where: {
-              [Op.and]: [
-                this.sequelize.asIs([
-                  this.quoteTable(topParent.model.name) + '.' + this.quoteIdentifier(topParent.model.primaryKeyField),
-                  this.quoteIdentifier(topInclude.through.model.name) + '.' + this.quoteIdentifier(topInclude.association.identifierField)
-                ].join(' = ')),
-                topInclude.through.where
-              ]
-            },
-            limit: 1,
-            includeIgnoreAttributes: false
-          }, topInclude.through.model);
-        } else {
-          const isBelongsTo = topInclude.association.associationType === 'BelongsTo';
-          const join = [
-            this.quoteTable(topParent.model.name) + '.' + this.quoteIdentifier(isBelongsTo ? topInclude.association.identifierField : topParent.model.primaryKeyAttributes[0]),
-            this.quoteIdentifier(topInclude.model.name) + '.' + this.quoteIdentifier(isBelongsTo ? topInclude.model.primaryKeyAttributes[0] : topInclude.association.identifierField)
-          ].join(' = ');
-          query = this.selectQuery(topInclude.model.tableName, {
-            attributes: [topInclude.model.primaryKeyAttributes[0]],
-            include: topInclude.include,
-            where: {
-              [Op.join]: this.sequelize.asIs(join)
-            },
-            limit: 1,
-            includeIgnoreAttributes: false
-          }, topInclude.model);
-        }
-        topLevelInfo.options.where['__' + throughAs] = this.sequelize.asIs([
-          '(',
-          query.replace(/\;$/, ''),
-          ')',
-          'IS NOT NULL'
-        ].join(' '));
-      }
     }
+
+    this._generateSubQueryFilter(include, includeAs, topLevelInfo);
 
     return {
       join: joinType,
@@ -1669,6 +1585,124 @@ const QueryGenerator = {
       condition: joinCondition,
       attributes
     };
+  },
+
+  /*
+   * Generates subQueryFilter - a select nested in the where clause of the subQuery.
+   * For a given include a query is generated that contains all the way from the subQuery
+   * table to the include table plus everything that's in required transitive closure of the
+   * given include.
+   */
+  _generateSubQueryFilter(include, includeAs, topLevelInfo) {
+    if (!topLevelInfo.subQuery || !include.subQueryFilter) {
+      return;
+    }
+
+    if (!topLevelInfo.options.where) {
+      topLevelInfo.options.where = {};
+    }
+    let parent = include;
+    let child = include;
+    let nestedIncludes = this._getRequiredClosure(include).include;
+    let query;
+
+    while ((parent = parent.parent)) { // eslint-disable-line
+      if (parent.parent && !parent.required) {
+        return; // only generate subQueryFilter if all the parents of this include are required
+      }
+
+      if (parent.subQueryFilter) {
+        // the include is already handled as this parent has the include on its required closure
+        // skip to prevent duplicate subQueryFilter
+        return;
+      }
+
+      nestedIncludes = [_.extend({}, child, { include: nestedIncludes, attributes: [] })];
+      child = parent;
+    }
+
+    const topInclude = nestedIncludes[0];
+    const topParent = topInclude.parent;
+    const topAssociation = topInclude.association;
+    topInclude.association = undefined;
+
+    if (topInclude.through && Object(topInclude.through.model) === topInclude.through.model) {
+      query = this.selectQuery(topInclude.through.model.getTableName(), {
+        attributes: [topInclude.through.model.primaryKeyField],
+        include: Model._validateIncludedElements({
+          model: topInclude.through.model,
+          include: [{
+            association: topAssociation.toTarget,
+            required: true,
+            where: topInclude.where,
+            include: topInclude.include
+          }]
+        }).include,
+        model: topInclude.through.model,
+        where: {
+          [Op.and]: [
+            this.sequelize.asIs([
+              this.quoteTable(topParent.model.name) + '.' + this.quoteIdentifier(topParent.model.primaryKeyField),
+              this.quoteIdentifier(topInclude.through.model.name) + '.' + this.quoteIdentifier(topAssociation.identifierField)
+            ].join(' = ')),
+            topInclude.through.where
+          ]
+        },
+        limit: 1,
+        includeIgnoreAttributes: false
+      }, topInclude.through.model);
+    } else {
+      const isBelongsTo = topAssociation.associationType === 'BelongsTo';
+      const sourceField = isBelongsTo ? topAssociation.identifierField : (topAssociation.sourceKeyField || topParent.model.primaryKeyField);
+      const targetField = isBelongsTo ? (topAssociation.sourceKeyField || topInclude.model.primaryKeyField) : topAssociation.identifierField;
+
+      const join = [
+        this.quoteIdentifier(topInclude.as) + '.' + this.quoteIdentifier(targetField),
+        this.quoteTable(topParent.as || topParent.model.name) + '.' + this.quoteIdentifier(sourceField)
+      ].join(' = ');
+
+      query = this.selectQuery(topInclude.model.getTableName(), {
+        attributes: [targetField],
+        include: Model._validateIncludedElements(topInclude).include,
+        model: topInclude.model,
+        where: {
+          [Op.and]: [
+            topInclude.where,
+            { [Op.join]: this.sequelize.asIs(join) }
+          ]
+        },
+        limit: 1,
+        tableAs: topInclude.as,
+        includeIgnoreAttributes: false
+      }, topInclude.model);
+    }
+
+    if (!topLevelInfo.options.where[Op.and]) {
+      topLevelInfo.options.where[Op.and] = [];
+    }
+
+    topLevelInfo.options.where[`__${includeAs.internalAs}`] = this.sequelize.asIs([
+      '(',
+      query.replace(/\;$/, ''),
+      ')',
+      'IS NOT NULL'
+    ].join(' '));
+  },
+
+  /*
+   * For a given include hierarchy creates a copy of it where only the required includes
+   * are preserved.
+   */
+  _getRequiredClosure(include) {
+    const copy = _.extend({}, include, {attributes: [], include: []});
+
+    if (Array.isArray(include.include)) {
+      copy.include = include.include
+        .filter(i => i.required)
+        .map(inc => this._getRequiredClosure(inc));
+    }
+
+    return copy;
   },
 
   getQueryOrders(options, model, subQuery) {
@@ -1860,6 +1894,10 @@ const QueryGenerator = {
 
   handleSequelizeMethod(smth, tableName, factory, options, prepend) {
     let result;
+
+    if (this.OperatorMap.hasOwnProperty(smth.comparator)) {
+      smth.comparator = this.OperatorMap[smth.comparator];
+    }
 
     if (smth instanceof Utils.Where) {
       let value = smth.logic;
@@ -2271,7 +2309,7 @@ const QueryGenerator = {
       return value;
     }
     if (comparator === undefined) {
-      throw new Error(`${key} and ${value} has no comperator`);
+      throw new Error(`${key} and ${value} has no comparator`);
     }
     key = this._getSafeKey(key, prefix);
     return [key, value].join(' '+comparator+' ');
@@ -2383,10 +2421,6 @@ const QueryGenerator = {
         escapeOptions.isList = true;
         return this._joinKeyValue(key, `(${this.escape(value[Op.all], field, escapeOptions)})`, `${comparator} ${this.OperatorMap[Op.all]}`, options.prefix);
       }
-    }
-
-    if (comparator.indexOf(this.OperatorMap[Op.regexp]) !== -1) {
-      return this._joinKeyValue(key, `'${value}'`, comparator, options.prefix);
     }
 
     if (value === null && comparator === this.OperatorMap[Op.eq]) {

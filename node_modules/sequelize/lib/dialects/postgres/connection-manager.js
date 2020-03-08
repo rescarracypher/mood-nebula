@@ -106,9 +106,35 @@ class ConnectionManager extends AbstractConnectionManager {
 
     return new Promise((resolve, reject) => {
       const connection = new this.lib.Client(connectionConfig);
+
       let responded = false;
 
+      const parameterHandler = message => {
+        switch (message.parameterName) {
+          case 'server_version':
+            if (this.sequelize.options.databaseVersion === 0) {
+              const version = semver.coerce(message.parameterValue).version;
+              this.sequelize.options.databaseVersion = semver.valid(version)
+                ? version
+                : this.defaultVersion;
+            }
+            break;
+          case 'standard_conforming_strings':
+            connection['standard_conforming_strings'] = message.parameterValue;
+            break;
+        }
+      };
+
+      if (!this.sequelize.config.native) {
+        // Receive various server parameters for further configuration
+        connection.connection.on('parameterStatus', parameterHandler);
+      }
+
       connection.connect(err => {
+        if (!this.sequelize.config.native) {
+          // remove parameter handler
+          connection.connection.removeListener('parameterStatus', parameterHandler);
+        }
         if (err) {
           if (err.code) {
             switch (err.code) {
@@ -155,7 +181,10 @@ class ConnectionManager extends AbstractConnectionManager {
       // Disable escape characters in strings, see https://github.com/sequelize/sequelize/issues/3545
       let query = '';
 
-      if (this.sequelize.options.databaseVersion !== 0 && semver.gte(this.sequelize.options.databaseVersion, '8.2.0')) {
+      if (this.sequelize.options.standardConformingStrings !== false && connection['standard_conforming_strings'] !== 'on') {
+        // Disable escape characters in strings
+        // see https://github.com/sequelize/sequelize/issues/3545 (security issue)
+        // see https://www.postgresql.org/docs/current/static/runtime-config-compatible.html#GUC-STANDARD-CONFORMING-STRINGS
         query += 'SET standard_conforming_strings=on;';
       }
 
@@ -208,7 +237,16 @@ class ConnectionManager extends AbstractConnectionManager {
     return (connection || this.sequelize).query(
       "SELECT typname, typtype, oid, typarray FROM pg_type WHERE (typtype = 'b' AND typname IN ('hstore', 'geometry', 'geography')) OR (typtype = 'e')"
     ).then(results => {
-      const result = Array.isArray(results) ? results.pop() : results;
+      let result = Array.isArray(results) ? results.pop() : results;
+
+      // When searchPath is prepended then two statements are executed and the result is
+      // an array of those two statements. First one is the SET search_path and second is
+      // the SELECT query result.
+      if (Array.isArray(result)) {
+        if (result[0].command === 'SET') {
+          result = result.pop();
+        }
+      }
 
       // Reset OID mapping for dynamic type
       [
