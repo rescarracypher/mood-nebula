@@ -1,0 +1,278 @@
+  @import url('https://fonts.googleapis.com/css?family=Codystar|Raleway+Dots|Raleway:200');
+
+  /* --------------------- NAVBAR / FOOTER / GLOBALS --------------------- */
+
+  nav, h1, h2, h3, h4, footer {
+    font-family: 'Robot'
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+  }
+  a {
+    letter-spacing: .1em;
+  }
+  a:hover {
+    color: #000;
+    text-shadow: .5px .5px #d363ff;
+    text-decoration: none;
+  }
+  .footer {
+/*    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;*/
+    z-index: 2;
+  }
+  html, body {
+    /*background-color: rgba(0, 0, 0, 1);*/
+    background: linear-gradient(#111, #000, #111);
+    background: -webkit-linear-gradient(#111, #000, #111);
+    background: -moz-linear-gradient(#111, #000, #111);
+    background: -o-linear-gradient(#111, #000, #111);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: 200;
+  }
+ /* --------------------- CONTENT --------------------- */
+
+.material-tooltip>.backdrop {
+  background: linear-gradient(rgba(8, 0, 17, .8), rgba(0, 0, 0, .8));
+}
+.material-tooltip>span {
+  font-size: 1em;
+  padding: 10px;
+  font-family: 'Roboto';
+  letter-spacing: .02em;
+  text-align: center;
+}
+.tap-target-content>h5 {
+  font-family: 'Raleway Dots', sans-serif;
+  letter-spacing: .4em;
+}
+.tap-target-content>p {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: .8em;
+  letter-spacing: .05em;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+/*.   COLOR WHEEL CSS.
+----------------------------------------------------------------*/
+
+
+ .today {
+  color: white;
+ }
+
+
+/* .active {
+  box-shadow: 1px 1.5px white;
+ }*/
+
+
+ #container {
+  position: fixed; /* Sit on top of the page content */
+ /* display: none; *//* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: rgba(0,0,0,0.5);  Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+ }
+
+ #colorwheel {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 100%;
+  height: 500px;
+ }
+
+
+.combination0:hover ~ .combination0
+,.combination15:hover ~ .combination15
+,.combination30:hover ~ .combination30
+,.combination45:hover ~ .combination45
+,.combination60:hover ~ .combination60
+,.combination75:hover ~ .combination75
+,.combination90:hover ~ .combination90
+,.combination105:hover ~ .combination105
+,.combination120:hover ~ .combination120
+,.combination135:hover ~ .combination135
+,.combination150:hover ~ .combination150
+,.combination165:hover ~ .combination165
+,.combination180:hover ~ .combination180
+,.combination195:hover ~ .combination195
+,.combination210:hover ~ .combination210
+,.combination225:hover ~ .combination225
+,.combination240:hover ~ .combination240
+,.combination255:hover ~ .combination255
+,.combination270:hover ~ .combination270
+,.combination285:hover ~ .combination285
+,.combination300:hover ~ .combination300
+,.combination315:hover ~ .combination315
+,.combination330:hover ~ .combination330
+,.combination345:hover ~ .combination345
+{
+  opacity: 1;
+}
+
+.combination0:hover ,.combination15:hover,.combination30:hover,.combination45:hover,
+.combination60:hover,.combination75:hover,.combination90:hover,.combination105:hover,
+.combination120:hover,.combination135:hover,.combination150:hover,.combination165:hover,
+.combination180:hover,.combination195:hover,.combination210:hover,.combination225:hover,
+.combination240:hover,.combination255:hover,.combination270:hover,.combination285:hover,
+.combination300:hover,.combination315:hover,.combination330:hover,.combination345:hover
+{
+  opacity: 1;
+}
+
+ .moodName {
+  opacity: 0;
+  display: inline-block;
+  position: absolute;
+  font-size: 2.5em;
+  color: transparent;
+ }
+
+ *:focus {
+  outline: none;
+ }
+
+ .btn-drop {
+  opacity: 0.3;
+  appearance: none;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  border-radius: 100%;
+ }
+
+/* after onClick event of color wheel */
+ .selected-color {
+  border: 1px solid silver;
+  background: transparent;
+  height: 50px;
+  width: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  border-radius: 90%;
+  opacity: 1.0;
+  transition: all ease-in .9s;
+  transition: background-color .9s ease-in-out .1s;
+}
+
+
+ /*.   CALENDAR CSS.
+ ----------------------------------------------------------------*/
+ .moodCalendar >
+  @charset "UTF-8";
+
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800);
+ body, html {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+ }
+
+ .container {
+   margin-left: auto;
+   margin-right: auto;
+   max-width: 1024px;
+   padding-bottom: 60px;
+ }
+
+
+
+
+ .cal-row p {
+   color: #50677A;
+   float: left;
+   font-size: 12px;
+   font-weight: 600;
+   letter-spacing: .04em;
+   line-height: 30px;
+   margin: 0 1% 0 0;
+   width: 5%;
+   text-transform: uppercase;
+ }
+
+ @media only screen and (max-width: 560px) {
+   .cal-row p {
+     width: 8%;
+   }
+   .cal-row .inner {
+     width: 91%;
+   }
+ }
+
+ .day {
+   background: #696969;
+   /*#082F52;*/
+   border-radius: 100%;
+   float: left;
+   height: 1.24em;
+   margin: 5.5px;
+   width: 1.24em;
+ }
+ .day.active {
+   /*border: 1px solid snow;*/
+ }
+
+ .day.positive {
+  height: 0.75em;
+  width: 1.22em;
+  border-radius: 0;
+  border-top-left-radius: 0.62em;
+  border-top-right-radius: 0.62em;
+ }
+
+ .day.negative {
+  height: 0.75em;
+  width: 1.22em;
+  border-radius: 0;
+  border-bottom-left-radius: 0.62em;
+  border-bottom-right-radius: 0.62em;
+ }
+
+ .day span {
+   display: none;
+ }
+
+ .material-tooltip {
+   max-width:350px;
+   min-width:300px;
+   font-family: 'Roboto';
+   text-align: left;
+   color: #C0C0C0;
+   font-size: 1.1em;
+ }
+

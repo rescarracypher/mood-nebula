@@ -1,0 +1,115 @@
+/* --------------------- NAVBAR / FOOTER / GLOBALS --------------------- */
+
+nav, h1, h2, h3, h4, footer {
+  letter-spacing: .2em;
+  font-weight:200;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  font-size: 2.2rem;
+
+}
+a {
+  letter-spacing: .1em;
+  margin-left: -5px;
+}
+a:hover {
+  color: #000;
+  text-shadow: .5px .5px #d363ff;
+  text-decoration: none;
+}
+/*.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+}*/
+html, body {
+ 
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0, 0, 0, 0.9), rgba(16,2,34, 0.8));
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 200;
+}
+
+.pulser {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  display: block;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
+
+.pulser::after {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 280px;
+  height: 280px;
+  display: block;
+  position: relative;
+  border-radius: 140px;
+  top: 10px;
+  left: 10px;
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
+
+.pulser-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pulser-wrap {
+  /*  position: absolute;
+    top: 50%;
+    left: 50%;*/
+  animation-name: pulse;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  transform-origin: 50% 50%;
+}
+.material-tooltip>.backdrop {
+  background: linear-gradient(rgba(8, 0, 17, .8), rgba(0, 0, 0, .8));
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.duration-select {
+  color: #fff;
+  background-color: #1a1a1a;
+  border: none;
+/*  padding: 10px;
+  width: 5px;*/
+  float:right;
+  display: inline;
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
+}
+
+.duration-select:hover {
+  opacity: 1;
+}
+.meditation-instructions {
+color: #e7e7e7;
+}

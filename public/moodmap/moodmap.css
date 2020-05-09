@@ -1,0 +1,106 @@
+  @import url('https://fonts.googleapis.com/css?family=Codystar|Raleway+Dots|Raleway:200');
+ 
+  /* --------------------- NAVBAR / FOOTER / GLOBALS --------------------- */
+
+  nav, h1, h2, h3, h4, footer {
+    font-family: 'Roboto'
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+  }
+  a {
+    letter-spacing: .1em;
+  }
+  a:hover {
+    color: #000;
+    text-shadow: .5px .5px #d363ff;
+    text-decoration: none;
+  }
+  .footer {
+/*    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;*/
+    z-index: 2;
+  }
+  html, body {
+/*  background: linear-gradient( to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, .9));
+    background: linear-gradient(#111, #000, #111);
+    background: -webkit-linear-gradient(#111, #000, #111);
+    background: -moz-linear-gradient(#111, #000, #111);
+    background: -o-linear-gradient(#111, #000, #111);*/
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: 200;
+  }
+ /* --------------------- CONTENT --------------------- */
+ 
+.tiny {
+  font-size: 1rem;
+}
+/* Instructions and Icons
+--------------------------------------------*/
+.tap-target-content>h5 {
+  font-family: 'Raleway Dots', sans-serif;
+  letter-spacing: .3em;
+}
+.tap-target-content>p {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: .8em;
+  letter-spacing: .05em;
+}
+
+/* Tables and Tabs
+--------------------------------------------*/
+a.tab-head {
+  color: lavender !important;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+.sentiment {
+  font-size: 3rem;
+  color: #fafafa;
+}
+li.indicator {
+  display: none;
+}
+#table1 {
+  background: linear-gradient(#000, #0f033f, #1b0575);
+  opacity: 1;
+  color: lavender;
+}
+#table2 {
+  background: linear-gradient(#1b0575, #2805b6, #4c21f8);
+  opacity: 1;
+  color: lavender;
+}
+#table3 {
+  background: linear-gradient(#4c21f8, #675bfc, #8d96ff);
+  opacity: 1;
+  color: navy;
+}
+#table4 {
+  background: linear-gradient(#8d96ff, #958bff, #e9e4ff);
+  opacity: 1;
+  color: navy;
+}
+td, tr, th {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-family: Roboto;
+}
+td {
+  font-size: .8em;
+  text-align: justify;
+}
+.wbScore {
+  text-align: center;
+}

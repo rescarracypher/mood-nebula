@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>NEBUL\</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
+
+    <!-- $jQuery 3.3.1 CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Compiled and minified CSS ~ Materialize -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet">
+  <!-- Compiled and minified JS ~ Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--  Icons ~ Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!--  background -->
+  <div id="particles-js"></div>
+  </div>
+
+  <!--******** Dropdown menu ********** -->
+  <script>
+   $(".dropdown-button").dropdown();
+ </script>
+
+  <!-- *********** NAVBAR *********** -->
+
+  <!-- NavBar Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/meditate">Meditate</a></li>
+    <li><a href="/moodmap">Map</a></li>
+  </ul>
+  <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo center">N E B U L \</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">menu</i></a></li>
+          <!-- <li><a href="/members">MOODS</a></li>
+          <li><a href="/missions">MISSIONS</a></li>
+          <li><a href="/memos">MEMOS</a></li> -->
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/login"><i class="material-icons">person_outline</i></a></li>
+          <li><a href="/logout"><i class="material-icons">clear</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  <br>
+  </head>
+  <!-- *********** END NAVBAR *********** -->
+
+
+  <!-- *********** MAIN CONTENT ********** -->
+  <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Password Reset</h2>
+        <!-- new password form -->
+        <form class="reset">
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="text" class="form-control" id="newPassword1-input" placeholder="New Password">
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Confirm New Password</label>
+            <input type="text" class="form-control" id="newPassword2-input" placeholder="Confirm New Password">
+          </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+        </form>
+        <!-- Submit button -->
+         <button id="reset" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </div> <!-- Close of container -->
+  <!-- *********** END MAIN CONTENT *********** -->
+
+  <!-- *********** FOOTER *********** -->
+   <footer class="footer page-footer black">
+    <div class="footer-copyright">
+      <div class="container text-center">
+        © 2018 NEBUL\
+      </div>
+    </div>
+  </footer>
+<!-- *********** END FOOTER *********** -->
+</body>
+</html>
+<!--************  Start of JS  *************** -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" >
+   
+    // reset password token created
+    $("#reset").on("click", function(){
+        var token = window.location.pathname.substring(7)
+        if ($("#newPassword1-input").val()===$("#newPassword2-input").val()){
+          resetUser(token, $("#newPassword2-input").val())
+        }
+    })
+    function resetUser(token, password) {
+      $.post("/reset", {
+        token: token,
+        password: password
+      }).then(function(data) {
+        window.location.replace('/');
+        // If there's an error, handle it by throwing up a boostrap alert
+      }).catch(handleLoginErr);
+    }
+
+    function handleLoginErr(err) {
+      $("#alert .msg").text(err.responseJSON);
+      $("#alert").fadeIn(500);
+    }
+
+  </script>
+<!-- ***************** End of JS ********************* -->
+<!-- ************************************************* -->
+
+
+<!-- ************************************************** -->
+<!-- ***************** Start of CSS ******************* -->
+<style>
+
+body {
+  margin: 0;
+  background-color: #17182f;
+  color: white;
+}
+h2 {
+  color:white;
+  font-size: 28px;
+}
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+nav {
+  position: relative;
+  z-index: 2;
+}
+form {
+  position: relative;
+}
+
+/* ************ Particles.js Container ***************/
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  z-index: 3;
+  position: relative;
+  align-content: center;
+}
+.form-control {
+  color: white;
+}
+#canvas-image {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position-x: 50%;
+  background-position-y: 65%;
+}
+
+/***************** Footer/Globals css ******************/
+  nav, h1, h2, h3, h4, footer {
+    font-family: 'Roboto'
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+  }
+  a {
+    letter-spacing: .1em;
+  }
+  a:hover {
+    color: #000;
+    text-shadow: .5px .5px #d363ff;
+    text-decoration: none;
+  }
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+  }
+  html, body {
+    background: linear-gradient(#111, #000, #111);
+    background: -webkit-linear-gradient(#111, #000, #111);
+    background: -moz-linear-gradient(#111, #000, #111);
+    background: -o-linear-gradient(#111, #000, #111);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: 200;
+  }
+
+    }
+  </style>
+
+<!-- ********* Background ******************** -->
+  <canvas id="canvas-image"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/1.1.0/granim.js"></script>
+  <script>
+
+  particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 355,
+      "density": {
+        "enable": true,
+        "value_area": 789.1476416322727
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.48927153781200905,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 0.2,
+        "opacity_min": 0,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 2,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 2,
+        "size_min": 0,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 0.2,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "bubble"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 83.91608391608392,
+        "size": 1,
+        "duration": 3,
+        "opacity": 1,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+  var granimInstance = new Granim({
+    element: '#canvas-image',
+    direction: 'top-bottom',
+    opacity: [.1, .5],
+    isPausedWhenNotInView: true,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#540fae', '#290854'],
+                ['#17f289', '#2bc9bd'],
+                ['#80d3fe', '#d38de5'],
+                ['#e79c2a', '#8d7bc7']
+            ],
+            transitionSpeed: 7000
+        }
+    }
+}); 
+
+</script>
